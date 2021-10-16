@@ -1,101 +1,98 @@
-puts "じゃんけん..."
+def game
 
-def janken
+  puts "じゃんけん..."
 
-  puts "[0]グー[1]チョキ[2]パー"
+  def janken
 
-  player_hand = gets.to_i
-  program_hand = rand(3)
+    puts "[0]グー[1]チョキ[2]パー"
 
-  jankens = ["グー", "チョキ","パー"]
-  puts "ホイ！"
-  puts "-----------------"
-  puts "あなた:#{jankens[player_hand]}を出しました, 相手:#{jankens[program_hand]}を出しました"
-  puts "-----------------"
+    player_hand = gets.to_i
+    program_hand = rand(3)
 
-  if player_hand == program_hand
-    puts "あいこで..."
-    puts "しょ！"
-    puts "-----------------"
-  return true
-  
-  elsif(player_hand == 0 && program_hand == 1)||(player_hand == 1 && program_hand == 2)||(player_hand == 2 && program_hand == 0)
-    puts "あなたの勝ちです"
-    puts "-----------------"
-    @result = "win"
-    return false
- 
-  else
-    puts "あなたの負けです"
-    puts "-----------------"
-    @result = "lose"
-    return false
-  end
-
-end
-
-next_game = true
-  while next_game do
-  next_game = janken
-  end
-
-
-def hoi
-  
-  if @result == "win"
-    puts "あっち向いて..."
-    puts "[0]:上 [1]:下 [2]:右 [3]:左"
-    
-    player_hoi = gets.to_i
-    program_hoi = rand(4)
-    
-    hois = ["上" , "下" , "右" , "左"]
-    
+    jankens = ["グー", "チョキ","パー"]
     puts "ホイ！"
+    puts "-----------------"
+    puts "あなた:#{jankens[player_hand]}を出しました, 相手:#{jankens[program_hand]}を出しました"
+    puts "-----------------"
+
+    if player_hand == program_hand
+      puts "あいこで..."
+      puts "しょ！"
+      puts "-----------------"
+    return true
+  
+    elsif(player_hand == 0 && program_hand == 1)||(player_hand == 1 && program_hand == 2)||(player_hand == 2 && program_hand == 0)
+      puts "あなたの勝ちです"
+      puts "-----------------"
+      @result = "win"
+      return false
+ 
+    else
+      puts "あなたの負けです"
+      puts "-----------------"
+      @result = "lose"
+      return false
+    end
+
+  end
+
+  next_game = true
+    while next_game do
+    next_game = janken
+    end
+  
+    if @result == "win"
+      puts "あっち向いて..."
+      puts "[0]:上 [1]:下 [2]:右 [3]:左"
     
-    if player_hoi == program_hoi
+      player_hoi = gets.to_i
+      program_hoi = rand(4)
+    
+      hois = ["上" , "下" , "右" , "左"]
+    
+      puts "ホイ！"
+    
+      if player_hoi == program_hoi
         puts "あなた:#{hois[player_hoi]}を指しました,相手:#{hois[program_hoi]}を向きました"
         puts "あなたの勝ち！"
         puts "-----------------"
         return false
         
-    else
+      else
         puts "あなた:#{hois[player_hoi]}を指しました,相手:#{hois[program_hoi]}を向きました"
         puts "引き分け"
         puts "-----------------"
         return true
+      end
     end
-  end
 
-  if @result == "lose"
-    puts "あっち向いて..."
-    puts "0:上 1:下 2:右 3:左"
+    if @result == "lose"
+      puts "あっち向いて..."
+      puts "0:上 1:下 2:右 3:左"
     
-    player_hoi = gets.to_i
-    program_hoi = rand(4)
+      player_hoi = gets.to_i
+      program_hoi = rand(4)
     
-    hois = ["上" , "下" , "右" , "左"]
+      hois = ["上" , "下" , "右" , "左"]
     
-    puts "ホイ！"
+      puts "ホイ！"
     
-    if player_hoi == program_hoi
+      if player_hoi == program_hoi
         puts "あなた:#{hois[player_hoi]}を向きました,相手:#{hois[program_hoi]}を指しました"
         puts "あなたの負け！"
         puts "-----------------"
         return false
         
-    else
+      else
         puts "あなた:#{hois[player_hoi]}を向きました,相手:#{hois[program_hoi]}を指しました"
         puts "引き分け"
         puts "-----------------"
         return true
+      end
     end
-  end
-
 end
 
-last_game = true
-  while last_game do
-  last_game = hoi
-  end
-
+  last_game = true
+    while last_game do
+    last_game = game
+    end
