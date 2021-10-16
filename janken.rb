@@ -40,7 +40,9 @@ next_game = true
   end
 
 
-if @result == "win"
+def hoi
+  
+  if @result == "win"
     puts "あっち向いて..."
     puts "[0]:上 [1]:下 [2]:右 [3]:左"
     
@@ -55,15 +57,17 @@ if @result == "win"
         puts "あなた:#{hois[player_hoi]}を指しました,相手:#{hois[program_hoi]}を向きました"
         puts "あなたの勝ち！"
         puts "-----------------"
+        return false
         
     else
         puts "あなた:#{hois[player_hoi]}を指しました,相手:#{hois[program_hoi]}を向きました"
         puts "引き分け"
         puts "-----------------"
+        return true
     end
-end
+  end
 
-if @result == "lose"
+  if @result == "lose"
     puts "あっち向いて..."
     puts "0:上 1:下 2:右 3:左"
     
@@ -78,10 +82,20 @@ if @result == "lose"
         puts "あなた:#{hois[player_hoi]}を向きました,相手:#{hois[program_hoi]}を指しました"
         puts "あなたの負け！"
         puts "-----------------"
+        return false
         
     else
         puts "あなた:#{hois[player_hoi]}を向きました,相手:#{hois[program_hoi]}を指しました"
         puts "引き分け"
         puts "-----------------"
+        return true
     end
+  end
+
 end
+
+last_game = true
+  while last_game do
+  last_game = hoi
+  end
+
